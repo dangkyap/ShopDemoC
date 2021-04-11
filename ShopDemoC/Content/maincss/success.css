@@ -1,0 +1,27 @@
+body, html{
+	height: 100%;
+}
+/*----------SUCCESS----------*/
+.success-background{
+	background-image: url("../img/logo/bg-success.jpg");
+	height: 100%;
+	background-position: center;
+  	background-repeat: no-repeat;
+  	background-size: cover;
+}
+.success-text{
+	font-size: 45px;
+	text-transform: uppercase;
+	font-weight: bold;
+	letter-spacing: 10px;
+	color: white;
+	margin-bottom: 30px;
+}
+.sc-btn{
+	border-radius: 25px;
+	background-color: #b52172;
+	color: #fff;
+	text-transform: uppercase;
+	padding: 10px 20px;
+}
+/*----------SUCCESS----------*/

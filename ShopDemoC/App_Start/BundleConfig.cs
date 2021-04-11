@@ -25,6 +25,14 @@ namespace ShopDemoC
                         "~/Scripts/summernote-bs4.min.js",
                         "~/Scripts/jquery.overlayScrollbars.min.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/mainjs").Include(
+                        "~/Scripts/mainjs/brands.js",
+                        "~/Scripts/mainjs/solid.js",
+                        "~/Scripts/mainjs/fontawesome.js",
+                        "~/Scripts/mainjs/jquery.js",                                             
+                        "~/Scripts/mainjs/angularjs.js",
+                        "~/Scripts/mainjs/bootstrap.js"));
+
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at https://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
@@ -45,6 +53,15 @@ namespace ShopDemoC
                       "~/Content/OverlayScrollbars.css",
                       "~/Content/daterangepicker.css",
                       "~/Content/summernote-bs4.css"));
+
+            bundles.Add(new StyleBundle("~/Content/maincss").Include(
+                      "~/Content/maincss/bootstrap.css",
+                      "~/Content/maincss/all.css",
+                      "~/Content/maincss/fontawesome.css",
+                      "~/Content/maincss/brands.css",
+                      "~/Content/maincss/solid.css",
+                      "~/Content/maincss/line-awesome.css",
+                      "~/Content/maincss/main.css"));
         }
     }
 }
