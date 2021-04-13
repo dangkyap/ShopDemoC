@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using System.Web.Mvc;
 
     public class Product
     {
@@ -28,9 +29,11 @@
         [Display(Name = "Product ID")]
         public long CategoryId { get; set; }
 
+        [AllowHtml]
         [MaxLength(500, ErrorMessage = "Content is too length.")]
         public string Description { get; set; }
 
+        [AllowHtml]
         [MaxLength(500, ErrorMessage = "Content is too length.")]
         public string Info { get; set; }
 

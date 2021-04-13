@@ -7,10 +7,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Shop.Models;
+using Shop.Common;
 
 namespace ShopDemoC.Areas.Admin.Controllers
 {
-    public class CategoriesController : Controller
+    public class CategoriesController : BaseController
     {
         private ShopDbContext db = new ShopDbContext();
 
@@ -54,6 +55,7 @@ namespace ShopDemoC.Areas.Admin.Controllers
             {
                 db.Categories.Add(category);
                 db.SaveChanges();
+                SetSuccessNotification();
                 return RedirectToAction("Index");
             }
 
@@ -88,9 +90,10 @@ namespace ShopDemoC.Areas.Admin.Controllers
             {
                 db.Entry(category).State = EntityState.Modified;
                 db.SaveChanges();
+                SetSuccessNotification();
                 return RedirectToAction("Index");
             }
-            ViewBag.ParentId = new SelectList(db.Categories, "Id", "DisplayText", category.ParentId);
+            //ViewBag.ParentId = new SelectList(db.Categories, "Id", "DisplayText", category.ParentId);
             return View(category);
         }
 

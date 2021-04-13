@@ -24,10 +24,12 @@ namespace Shop.Models
 
 		public System.Data.Entity.DbSet<Account> Accounts { get; set; }
 
-		//protected override void OnModelCreating(DbModelBuilder modelBuilder)
-		//{
-		//    base.OnModelCreating(modelBuilder);
-		//    modelBuilder.Entity<Product>().HasRequired(p => p.Category).WithMany();
-		//}
-	}
+        public System.Data.Entity.DbSet<OrderDetail> OrderDetails { get; set; }
+
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    base.OnModelCreating(modelBuilder);
+        //    modelBuilder.Entity<Product>().HasRequired(p => p.Category).WithMany();
+        //}
+    }
 }
