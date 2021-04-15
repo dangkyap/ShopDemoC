@@ -10,7 +10,7 @@ using Shop.Models;
 
 namespace ShopDemoC.Areas.Admin.Controllers
 {
-    public class PricesController : Controller
+    public class PricesController : BaseController
     {
         private ShopDbContext db = new ShopDbContext();
 
@@ -54,6 +54,7 @@ namespace ShopDemoC.Areas.Admin.Controllers
             {
                 db.Prices.Add(price);
                 db.SaveChanges();
+                SetSuccessNotification();
                 return RedirectToAction("Index");
             }
 
@@ -68,7 +69,9 @@ namespace ShopDemoC.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Price price = db.Prices.Find(id);
+            //Price price = db.Prices.Find(id);
+            IEnumerable<Price> list = db.Prices.Where(pr => pr.ProductId==1);
+            Price price = list.OrderByDescending(p => p.ApplyDate).First();
             if (price == null)
             {
                 return HttpNotFound();
@@ -88,6 +91,7 @@ namespace ShopDemoC.Areas.Admin.Controllers
             {
                 db.Entry(price).State = EntityState.Modified;
                 db.SaveChanges();
+                SetSuccessNotification();
                 return RedirectToAction("Index");
             }
             ViewBag.ProductId = new SelectList(db.Products, "Id", "Name", price.ProductId);
@@ -117,6 +121,7 @@ namespace ShopDemoC.Areas.Admin.Controllers
             Price price = db.Prices.Find(id);
             db.Prices.Remove(price);
             db.SaveChanges();
+            SetSuccessNotification();
             return RedirectToAction("Index");
         }
 

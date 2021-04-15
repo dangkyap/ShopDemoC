@@ -10,7 +10,7 @@ using Shop.Models;
 
 namespace ShopDemoC.Areas.Admin.Controllers
 {
-    public class UsersController : Controller
+    public class UsersController : BaseController
     {
         private ShopDbContext db = new ShopDbContext();
 
@@ -54,6 +54,7 @@ namespace ShopDemoC.Areas.Admin.Controllers
             {
                 db.Users.Add(user);
                 db.SaveChanges();
+                SetSuccessNotification();
                 return RedirectToAction("Index");
             }
 
@@ -88,6 +89,7 @@ namespace ShopDemoC.Areas.Admin.Controllers
             {
                 db.Entry(user).State = EntityState.Modified;
                 db.SaveChanges();
+                SetSuccessNotification();
                 return RedirectToAction("Index");
             }
             ViewBag.AccountId = new SelectList(db.Accounts, "Id", "LoginName", user.AccountId);
@@ -117,6 +119,7 @@ namespace ShopDemoC.Areas.Admin.Controllers
             User user = db.Users.Find(id);
             db.Users.Remove(user);
             db.SaveChanges();
+            SetSuccessNotification();
             return RedirectToAction("Index");
         }
 

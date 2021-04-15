@@ -10,7 +10,7 @@ using Shop.Models;
 
 namespace ShopDemoC.Areas.Admin.Controllers
 {
-    public class AccountsController : Controller
+    public class AccountsController : BaseController
     {
         private ShopDbContext db = new ShopDbContext();
 
@@ -52,6 +52,7 @@ namespace ShopDemoC.Areas.Admin.Controllers
             {
                 db.Accounts.Add(account);
                 db.SaveChanges();
+                SetSuccessNotification();
                 return RedirectToAction("Index");
             }
 
@@ -84,6 +85,7 @@ namespace ShopDemoC.Areas.Admin.Controllers
             {
                 db.Entry(account).State = EntityState.Modified;
                 db.SaveChanges();
+                SetSuccessNotification();
                 return RedirectToAction("Index");
             }
             return View(account);
@@ -112,6 +114,7 @@ namespace ShopDemoC.Areas.Admin.Controllers
             Account account = db.Accounts.Find(id);
             db.Accounts.Remove(account);
             db.SaveChanges();
+            SetSuccessNotification();
             return RedirectToAction("Index");
         }
 

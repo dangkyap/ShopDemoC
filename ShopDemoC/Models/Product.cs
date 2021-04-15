@@ -22,6 +22,9 @@
         [Display(Name = "Product name")]
         public string Name { get; set; }
 
+        [Required]
+        public double Price { get; set; }
+
         [MaxLength(150)]
         public string Brand { get; set; }
 
@@ -56,8 +59,10 @@
         //TODO: add product quantity
 
         public PublishStatus Status { get; set; }
+
         [Display(Name = "Publish on date")]
-        [DisplayFormat(DataFormatString = "yyyy-MM-dd")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", NullDisplayText = "", ApplyFormatInEditMode = true)]
         public DateTime PublishDate { get; set; }
 
         public virtual Category Category { get; set; }

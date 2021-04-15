@@ -10,7 +10,7 @@ using Shop.Models;
 
 namespace ShopDemoC.Areas.Admin.Controllers
 {
-    public class ProductsController : Controller
+    public class ProductsController : BaseController
     {
         private ShopDbContext db = new ShopDbContext();
 
@@ -48,12 +48,13 @@ namespace ShopDemoC.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Brand,CategoryId,Description,Info,FeatureImage,ImgLink1,ImgLink2,ImgLink3,ImgLink4,Status,PublishDate")] Product product)
+        public ActionResult Create([Bind(Include = "Id,Name,Price,Brand,CategoryId,Description,Info,FeatureImage,ImgLink1,ImgLink2,ImgLink3,ImgLink4,Status,PublishDate")] Product product)
         {
             if (ModelState.IsValid)
             {
                 db.Products.Add(product);
                 db.SaveChanges();
+                SetSuccessNotification();
                 return RedirectToAction("Index");
             }
 
@@ -82,12 +83,13 @@ namespace ShopDemoC.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Brand,CategoryId,Description,Info,FeatureImage,ImgLink1,ImgLink2,ImgLink3,ImgLink4,Status,PublishDate")] Product product)
+        public ActionResult Edit([Bind(Include = "Id,Name,Price,Brand,CategoryId,Description,Info,FeatureImage,ImgLink1,ImgLink2,ImgLink3,ImgLink4,Status,PublishDate")] Product product)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
+                SetSuccessNotification();
                 return RedirectToAction("Index");
             }
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "DisplayText", product.CategoryId);
@@ -117,6 +119,7 @@ namespace ShopDemoC.Areas.Admin.Controllers
             Product product = db.Products.Find(id);
             db.Products.Remove(product);
             db.SaveChanges();
+            SetSuccessNotification();
             return RedirectToAction("Index");
         }
 

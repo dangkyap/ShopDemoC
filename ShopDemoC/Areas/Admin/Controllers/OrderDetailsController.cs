@@ -14,14 +14,14 @@ namespace ShopDemoC.Areas.Admin.Controllers
     {
         private ShopDbContext db = new ShopDbContext();
 
-        // GET: Admin/OrderDetails
+        // GET: Admin/OrderDetails1
         public ActionResult Index()
         {
             var orderDetails = db.OrderDetails.Include(o => o.Order).Include(o => o.Product);
             return View(orderDetails.ToList());
         }
 
-        // GET: Admin/OrderDetails/Details/5
+        // GET: Admin/OrderDetails1/Details/5
         public ActionResult Details(long? id)
         {
             if (id == null)
@@ -36,7 +36,7 @@ namespace ShopDemoC.Areas.Admin.Controllers
             return View(orderDetail);
         }
 
-        // GET: Admin/OrderDetails/Create
+        // GET: Admin/OrderDetails1/Create
         public ActionResult Create()
         {
             ViewBag.OrderId = new SelectList(db.Orders, "Id", "FullName");
@@ -44,7 +44,7 @@ namespace ShopDemoC.Areas.Admin.Controllers
             return View();
         }
 
-        // POST: Admin/OrderDetails/Create
+        // POST: Admin/OrderDetails1/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -63,7 +63,7 @@ namespace ShopDemoC.Areas.Admin.Controllers
             return View(orderDetail);
         }
 
-        // GET: Admin/OrderDetails/Edit/5
+        // GET: Admin/OrderDetails1/Edit/5
         public ActionResult Edit(long? id)
         {
             if (id == null)
@@ -80,7 +80,7 @@ namespace ShopDemoC.Areas.Admin.Controllers
             return View(orderDetail);
         }
 
-        // POST: Admin/OrderDetails/Edit/5
+        // POST: Admin/OrderDetails1/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -98,7 +98,7 @@ namespace ShopDemoC.Areas.Admin.Controllers
             return View(orderDetail);
         }
 
-        // GET: Admin/OrderDetails/Delete/5
+        // GET: Admin/OrderDetails1/Delete/5
         public ActionResult Delete(long? id)
         {
             if (id == null)
@@ -113,7 +113,7 @@ namespace ShopDemoC.Areas.Admin.Controllers
             return View(orderDetail);
         }
 
-        // POST: Admin/OrderDetails/Delete/5
+        // POST: Admin/OrderDetails1/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(long id)

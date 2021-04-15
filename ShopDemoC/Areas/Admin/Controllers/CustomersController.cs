@@ -14,14 +14,14 @@ namespace ShopDemoC.Areas.Admin.Controllers
     {
         private ShopDbContext db = new ShopDbContext();
 
-        // GET: Admin/Customers
+        // GET: Admin/Customers1
         public ActionResult Index()
         {
             var customers = db.Customers.Include(c => c.Account);
             return View(customers.ToList());
         }
 
-        // GET: Admin/Customers/Details/5
+        // GET: Admin/Customers1/Details/5
         public ActionResult Details(long? id)
         {
             if (id == null)
@@ -36,14 +36,14 @@ namespace ShopDemoC.Areas.Admin.Controllers
             return View(customer);
         }
 
-        // GET: Admin/Customers/Create
+        // GET: Admin/Customers1/Create
         public ActionResult Create()
         {
             ViewBag.AccountId = new SelectList(db.Accounts, "Id", "LoginName");
             return View();
         }
 
-        // POST: Admin/Customers/Create
+        // POST: Admin/Customers1/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -61,7 +61,7 @@ namespace ShopDemoC.Areas.Admin.Controllers
             return View(customer);
         }
 
-        // GET: Admin/Customers/Edit/5
+        // GET: Admin/Customers1/Edit/5
         public ActionResult Edit(long? id)
         {
             if (id == null)
@@ -77,7 +77,7 @@ namespace ShopDemoC.Areas.Admin.Controllers
             return View(customer);
         }
 
-        // POST: Admin/Customers/Edit/5
+        // POST: Admin/Customers1/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -94,7 +94,7 @@ namespace ShopDemoC.Areas.Admin.Controllers
             return View(customer);
         }
 
-        // GET: Admin/Customers/Delete/5
+        // GET: Admin/Customers1/Delete/5
         public ActionResult Delete(long? id)
         {
             if (id == null)
@@ -109,7 +109,7 @@ namespace ShopDemoC.Areas.Admin.Controllers
             return View(customer);
         }
 
-        // POST: Admin/Customers/Delete/5
+        // POST: Admin/Customers1/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(long id)
