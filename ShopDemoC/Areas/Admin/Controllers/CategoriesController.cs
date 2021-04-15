@@ -11,6 +11,9 @@ using Shop.Common;
 
 namespace ShopDemoC.Areas.Admin.Controllers
 {
+    [Authorize]
+    [CustomActionFilter]
+    [ExceptionHandlerFilter]
     public class CategoriesController : BaseController
     {
         private ShopDbContext db = new ShopDbContext();

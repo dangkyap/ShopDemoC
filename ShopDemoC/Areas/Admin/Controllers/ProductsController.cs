@@ -6,10 +6,14 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Shop.Common;
 using Shop.Models;
 
 namespace ShopDemoC.Areas.Admin.Controllers
 {
+    [Authorize]
+    [CustomActionFilter]
+    [ExceptionHandlerFilter]
     public class ProductsController : BaseController
     {
         private ShopDbContext db = new ShopDbContext();
