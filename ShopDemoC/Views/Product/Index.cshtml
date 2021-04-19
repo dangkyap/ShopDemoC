@@ -9,6 +9,10 @@
     @Styles.Render("~/Content/productcss")
 }
 
+<div class="container-fluid" id="addCartPopup" onclick="PopupDis()">
+    <div>You added a product to your shopping cart</div>
+    <div>Tap to close</div>
+</div>
 <main>
     <div class="container mb-2 pt-2">
         <div class="row">
@@ -42,9 +46,9 @@
                     <div class="product-brand mb-3"><h4>@Html.DisplayFor(model => model.Brand)</h4></div>
                     <div class="product-price mb-3"><h4>$ @Html.DisplayFor(model => model.Price) USD</h4></div>
                     <div>
-                        <div class="d-flex mb-3">Quality</div>
+                        @*<div class="d-flex mb-3">Quality</div>*@
                         <div class="d-flex align-items-center">
-                            <input type="text" name="qty" id="qty" value="1" class="input-qty">
+                            @*<input type="text" name="qty" id="qty" value="1" class="input-qty">*@
                             <button type="button" class="btn category-btn" onclick="addCartBtnPop()">@Html.ActionLink("Add to Cart", "AddToCart", new { controller = "Cart", id = Model.Id }, new { @class = "btn category-btn" })</button>
                         </div>
                     </div>
