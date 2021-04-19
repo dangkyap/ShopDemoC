@@ -36,6 +36,9 @@ namespace ShopDemoC
             bundles.Add(new ScriptBundle("~/bundles/ckeditor").Include(
                         "~/Scripts/ckeditor/ckeditor.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/product").Include(
+                        "~/Scripts/gallery.js"));
+
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at https://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
@@ -65,6 +68,12 @@ namespace ShopDemoC
                       "~/Content/maincss/solid.css",
                       "~/Content/maincss/line-awesome.css",
                       "~/Content/maincss/main.css"));
+
+            bundles.Add(new StyleBundle("~/Content/productcss").Include(
+                      "~/Content/maincss/product-only.css"));
+
+            bundles.Add(new StyleBundle("~/Content/cartcss").Include(
+                      "~/Content/maincss/cart.css"));
         }
     }
 }

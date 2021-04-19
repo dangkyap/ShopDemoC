@@ -7,6 +7,7 @@
     @*@Styles.Render("~/Content/css")*@
     @Styles.Render("~/Content/maincss")
     @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("specialcss", required: false)
 </head>
 <body>
     <header>
@@ -17,7 +18,7 @@
                         My Account
                     </button>
                     <div class="dropdown-menu" aria-labelledby="signInDropdown">
-                        <a class="dropdown-item" href="login.html">Sign in</a>
+                        <a class="dropdown-item" href="@Url.Action("Login", "Account")">Sign in</a>
                         <a class="dropdown-item" href="register.html">Create an Account</a>
                     </div>
                 </div>
@@ -26,12 +27,12 @@
                 <p class="my-auto text-light customerCall"><i class="fas fa-phone"></i>   Customer service<a href="tel:1-800-332-0055"><b>1-800-332-0055</b></a></p>
             </div>
             <div class="col-2 d-lg-none d-flex align-items-center justify-content-center">
-                <a href="cart.html"><i class="fas fa-shopping-cart fa-2x text-light"></i></a>
+                <a href="@Url.Action("Index", "Cart")"><i class="fas fa-shopping-cart fa-2x text-light"></i></a>
             </div>
         </div>
         <div class="row">
             <div class="col-4 col-lg-3 d-flex justify-content-center">
-                <a href="index.html"><img class="logoBanner" src="~/Content/img/MainPage/logo/logo-banner.jpg"></a>
+                <a href="@Url.Action("Index", "Home")"><img class="logoBanner" src="~/Content/img/MainPage/logo/logo-banner.jpg"></a>
             </div>
             <div class="col-8 col-lg-6 my-auto">
                 <!-- Search form -->
@@ -42,7 +43,7 @@
             </div>
             <div class="d-none d-lg-block col-lg-3 row">
                 <div class="col-4 mx-auto cartBackground h-100">
-                    <a href="cart.html">
+                    <a href="@Url.Action("Index", "Cart")">
                         <div class="text-center pt-3">
                             <i class="fas fa-shopping-cart fa-2x text-light"></i>
                         </div>
@@ -61,35 +62,35 @@
                 <div class="collapse navbar-collapse" id="basicNav">
                     <ul class="navbar-nav mr-auto font-weight-bold">
                         <li class="nav-item active px-3">
-                            <a class="nav-link" href="index.html">
+                            <a class="nav-link" href="@Url.Action("Index", "Home")">
                                 HOME</i>
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
                         <li class="nav-item px-3">
-                            <a class="nav-link" href="category.html?type=type-category-hair-tcfhtml">HAIR</a>
+                            <a class="nav-link" href="@Url.Action("Index", "Category", new { category = 1} )">HAIR</a>
                         </li>
                         <li class="nav-item px-3">
-                            <a class="nav-link" href="category.html?type=type-category-skin-tcfhtml">SKIN</a>
+                            <a class="nav-link" href="@Url.Action("Index", "Category", new { category = 2} )">SKIN</a>
                         </li>
                         <li class="nav-item px-3">
-                            <a class="nav-link" href="category.html?type=type-category-makeup-tcfhtml">MAKE-UP KITS</a>
+                            <a class="nav-link" href="@Url.Action("Index", "Category", new { category = 3} )">MAKE-UP KITS</a>
                         </li>
                         <li class="nav-item dropdown px-3">
                             <a class="nav-link" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">NAIL</a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenu">
-                                <a class="dropdown-item" href="category.html?type=type-category-np-tcfhtml">NAIL PAINTS</a>
-                                <a class="dropdown-item" href="category.html?type=type-category-na-tcfhtml">NAIL ARTS</a>
+                                <a class="dropdown-item" href="@Url.Action("Index", "Category", new { category = 5} )">NAIL PAINTS</a>
+                                <a class="dropdown-item" href="@Url.Action("Index", "Category", new { category = 6} )">NAIL ARTS</a>
                             </div>
                         </li>
                         <li class="nav-item px-3">
-                            <a class="nav-link" href="category.html?type=type-category-jewel-tcfhtml">JEWELLRY</a>
+                            <a class="nav-link" href="@Url.Action("Index", "Category", new { category = 7} )">JEWELLRY</a>
                         </li>
                         <li class="nav-item px-3">
-                            <a class="nav-link" href="category.html?type=type-category-wedding-tcfhtml">WEDDING KITS</a>
+                            <a class="nav-link" href="@Url.Action("Index", "Category", new { category = 8} )">WEDDING KITS</a>
                         </li>
                         <li class="nav-item px-3">
-                            <a class="nav-link" href="category.html?type=type-category-upcoming-tcfhtml">UPCOMING PRODUCTS</a>
+                            <a class="nav-link" href="@Url.Action("Index", "Category", new { category = 9} )">UPCOMING PRODUCTS</a>
                         </li>
                     </ul>
                 </div>

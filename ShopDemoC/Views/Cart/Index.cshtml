@@ -5,52 +5,70 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Shopping Cart</h2>
+@section specialcss
+{
+    @Styles.Render("~/Content/cartcss")
+}
 
-<p>
-    @Html.ActionLink("Continue shopping", "Index", new { controller = "Products" })
-</p>
+<div class="row categoryTitle">
+    <div class="container">Your Cart</div>
+</div>
 
 @using (Html.BeginForm("UpdateCart", "Cart", FormMethod.Post))
 {
-    <table class="table">
-        <tr>
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col" class="cartTableL">Item</th>
+                    <th scope="col" class="cartTableS text-center-s">Price</th>
+                    <th scope="col" class="cartTableM text-center-s">Quantity</th>
+                    <th scope="col" class="cartTableS text-center-s">Total</th>
+                    <th scope="col" class="cartTableXS text-center-s"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @{double total = 0; }
+                @foreach (var item in Model)
+                {
+                    double pricesum = 0;
+                    pricesum += item.Price * item.Quantity;
+                    total += pricesum;
+                    <tr>
+                        <th scope="row">
+                            @Html.DisplayFor(modelItem => item.ProductName)
+                            <input type="hidden" value="@item.ProductId" name="productIds" id="productId_@item.ProductId" />
+                        </th>
+                        <td class="text-center-s">$ @Html.DisplayFor(modelItem => item.Price)</td>
+                        <td>
+                            <div class="input-group d-flex justify-content-center">
+                                <input type="number" step="1" min="1" max="100" value="@item.Quantity" class="quantity-field" name="quantities" id="quantity_@item.ProductId">
+                            </div>
+                        </td>
+                        <td class="text-center-s">@pricesum</td>
+                        <td class="text-center-s">
+                            @Html.ActionLink("Delete", "RemoveFromCart", new { id = item.ProductId }, new { @class = "btn btn-primary delRow" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <input type="submit" value="Update Cart" class="btn btn-default" />
+        <div class="row my-2">
+            <div class="col-8"></div>
+            <div class="col-4 row cartTotal">
+                <div class="col-6">Grand Total</div>
+                <div class="col-6">@total</div>
+            </div>
+        </div>
+        <div class="container my-3">
+            <div class="text-right">
+                <a href="success.html"><button type="button" class="btn checkout-btn">Check out</button></a>
+                <a href="@Url.Action("Index", "Home")"><button type="button" class="btn continue-btn">Continue shopping</button></a>
+            </div>
+        </div>
+    </div>
 
-            <th>
-                @Html.DisplayNameFor(model => model.ImageUrl)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Quantity)
-            </th>
-            <th></th>
-        </tr>
-
-
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    <img class="img-thumbnail product-image-thumb" style="max-width:100px; max-height:100px;" src="@Server.UrlDecode(item.ImageUrl)" />
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ProductName)
-
-                    <input type="hidden" value="@item.ProductId" name="productIds" id="productId_@item.ProductId" />
-                </td>
-                <td>
-                    <input type="number" value="@item.Quantity" name="quantities" id="quantity_@item.ProductId" />
-                </td>
-                <td>
-                    @Html.ActionLink("Details", "Details", new { id = item.ProductId }) |
-                    @Html.ActionLink("Delete", "RemoveFromCart", new { id = item.ProductId })
-                </td>
-            </tr>
-        }
-
-    </table>
-    <input type="submit" value="Update Cart" class="btn btn-default" />
-    @Html.ActionLink("Check out", "CheckOut")
 }
+
+

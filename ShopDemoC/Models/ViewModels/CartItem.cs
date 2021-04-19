@@ -13,7 +13,7 @@ namespace Shop.Models.ViewModels
 			public string ProductName { get; set; }
 			public string ImageUrl { get; set; }
 			public int Quantity { get; set; }
-			public decimal Price { get; set; }
+			public double Price { get; set; }
 
 			public CartItem(Product product, int quantity)
 			{
@@ -21,7 +21,7 @@ namespace Shop.Models.ViewModels
 				ProductName = product.Name;
 				ImageUrl = product.FeatureImage;
 				Quantity = quantity;
-				Price = product.Prices.First().Value;
+				Price = product.Price;
 			}
 		}
 	}

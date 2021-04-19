@@ -1,0 +1,75 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@model IEnumerable<Shop.Models.Product>
+
+
+<div class="container-fluid" id="addCartPopup" onclick="PopupDis()">
+    <div>You added a product to your shopping cart</div>
+    <div>Tap to close</div>
+</div>
+
+<main>
+    <div class="row categoryTitle">
+
+    </div>
+    <div class="row my-3">
+        <div class="col-6"></div>
+        <div class="col-2 text-right"><h4 class="mb-3 sortTitle">Sort by</h4></div>
+        <div class="col-4">
+            <select class="orderSelect">
+                <option value="'No'">No</option>
+                <option value="'Name'">Name</option>
+                <option value="'Price'">Price</option>
+                <option value="'By'">Brand</option>
+                <option value="'Best'">Best Seller</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row d-flex justify-content-center">
+        <div class="container">
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="productItemContainer">
+                            <a href="@Url.Action("Index", "Product", new { id = item.Id })"><img src="@Html.DisplayFor(modelItem => item.FeatureImage)" class="mx-auto d-block"></a>
+                            <div class="container d-block mt-2">
+                                <h4 class="text-center cardTitle"><a href="#">@Html.DisplayFor(modelItem => item.Name)</a></h4>
+                                <div class="text-center priceSection mb-2">
+                                    $ @Html.DisplayFor(modelItem => item.Price) USD
+                                </div>
+                                <div class="row d-flex justify-content-center mb-2">
+                                    <button type="button" class="btn category-btn" onclick="addCartBtnPop()">@Html.ActionLink("Add to Cart", "AddToCart", new { controller = "Cart", id = item.Id }, new { @class = "btn category-btn" })</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</main>
+
+@section scripts
+{
+    <script>
+        function addCartBtnPop() {
+            var popUpA = document.getElementById("addCartPopup");
+            if (popUpA.style.display = "none") {
+                popUpA.style.display = "block";
+            }
+        }
+    </script>
+    <script>
+        function PopupDis() {
+            var popUpD = document.getElementById("addCartPopup");
+            if (popUpD.style.display = "block") {
+                popUpD.style.display = "none";
+            }
+        }
+    </script>
+
+}

@@ -52,7 +52,7 @@ namespace ShopDemoC.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Price,Brand,CategoryId,Description,Info,FeatureImage,ImgLink1,ImgLink2,ImgLink3,ImgLink4,Status,PublishDate")] Product product)
+        public ActionResult Create([Bind(Include = "Id,Name,Price,Brand,CategoryId,Description,Info,FeatureImage,ImgLink1,ImgLink2,ImgLink3,ImgLink4,Status,PublishDate,Hot")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -87,7 +87,7 @@ namespace ShopDemoC.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Price,Brand,CategoryId,Description,Info,FeatureImage,ImgLink1,ImgLink2,ImgLink3,ImgLink4,Status,PublishDate")] Product product)
+        public ActionResult Edit([Bind(Include = "Id,Name,Price,Brand,CategoryId,Description,Info,FeatureImage,ImgLink1,ImgLink2,ImgLink3,ImgLink4,Status,PublishDate,Hot")] Product product)
         {
             if (ModelState.IsValid)
             {

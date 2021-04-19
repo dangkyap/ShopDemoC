@@ -33,11 +33,11 @@
         public long CategoryId { get; set; }
 
         [AllowHtml]
-        [MaxLength(500, ErrorMessage = "Content is too length.")]
+        [MaxLength(5000, ErrorMessage = "Content is too length.")]
         public string Description { get; set; }
 
         [AllowHtml]
-        [MaxLength(500, ErrorMessage = "Content is too length.")]
+        [MaxLength(5000, ErrorMessage = "Content is too length.")]
         public string Info { get; set; }
 
         [MaxLength(250)]
@@ -55,6 +55,8 @@
 
         [MaxLength(250)]
         public string ImgLink4 { get; set; }
+
+        public int Hot { get; set; }
 
         //TODO: add product quantity
 

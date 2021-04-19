@@ -2,6 +2,8 @@
     ViewBag.Title = "Home Page";
 }
 
+@model List<Shop.Models.Product>
+
 <div id="carouselEx" class="carousel slide mb-3" data-ride="carousel">
     <ol class="carousel-indicators">
         <li data-target="#carouselEx" data-slide-to="0" class="active"></li>
@@ -40,8 +42,8 @@
 <div class="row d-flex justify-content-center mb-3">
     <div class="col-5 mr-3"><a href="product.html?id=mk-3"><img class="mainPageSubBannerL float-right" src="~/Content/img/MainPage/logo/banner-3.jpg"></a></div>
     <div class="col-5 row">
-        <div class="col-12"><a href="login.html"><img class="mainPageSubBanner" src="~/Content/img/MainPage/logo/banner-1.jpg"></a></div>
-        <div class="col-12"><a href="category.html?type=type-category-makeup-tcfhtml"><img class="mainPageSubBanner" src="~/Content/img/MainPage/logo/banner-2.jpg"></a></div>
+        <div class="col-12"><a href="@Url.Action("Login", "Account")"><img class="mainPageSubBanner" src="~/Content/img/MainPage/logo/banner-1.jpg"></a></div>
+        <div class="col-12"><a href="@Url.Action("Index", "Category")"><img class="mainPageSubBanner" src="~/Content/img/MainPage/logo/banner-2.jpg"></a></div>
     </div>
 </div>
 <div class="row justify-content-center">
@@ -51,42 +53,21 @@
     </h5>
 </div>
 <div class="row my-3 d-flex justify-content-center">
-    <div class="col-2 mx-2 productItemContainer">
-        <a href="product.html?id=j-1"><img src="~/Content/img/MainPage/resource/j-1-1.jpg" class="mx-auto d-block"></a>
-        <div class="container d-block mt-2">
-            <h4 class="text-center cardTitle"><a href="#">Freshwater Pearl Ring in Sterling Silver</a></h4>
-            <div class="text-center priceSection mb-2">
-                $ 600.00 USD
+    @foreach (var item in Model)
+    {
+        if (item.Hot == 1)
+        { 
+        <div class="col-2 mx-2 productItemContainer">
+            <a href="@Url.Action("Index", "Product", new { id = item.Id})"><img src="@Server.UrlDecode(item.FeatureImage)" class="mx-auto d-block"></a>
+            <div class="container d-block mt-2">
+                <h4 class="text-center cardTitle"><a href="#">@item.Name</a></h4>
+                <div class="text-center priceSection mb-2">
+                    $ @item.Price USD
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col-2 mx-2 productItemContainer">
-        <a href="product.html?id=j-2"><img src="~/Content/img/MainPage/resource/j-2-1.jpg" class="mx-auto d-block"></a>
-        <div class="container d-block mt-2">
-            <h4 class="text-center cardTitle"><a href="#">T1 Narrow Diamond Ring</a></h4>
-            <div class="text-center priceSection mb-2">
-                $ 1600.00 USD
-            </div>
-        </div>
-    </div>
-    <div class="col-2 mx-2 productItemContainer">
-        <a href="product.html?id=j-3"><img src="~/Content/img/MainPage/resource/j-3-1.jpg" class="mx-auto d-block"></a>
-        <div class="container d-block mt-2">
-            <h4 class="text-center cardTitle"><a href="#">Diamond Vine Bypass Ring in Platinum</a></h4>
-            <div class="text-center priceSection mb-2">
-                $ 16000.00 USD
-            </div>
-        </div>
-    </div>
-    <div class="col-2 mx-2 productItemContainer">
-        <a href="product.html?id=np-5"><img src="~/Content/img/MainPage/resource/np-5-1.jpg" class="mx-auto d-block"></a>
-        <div class="container d-block mt-2">
-            <h4 class="text-center cardTitle"><a href="#">Bella Voste Gold Glitter Nail Paint (10 ml)</a></h4>
-            <div class="text-center priceSection mb-2">
-                $ 0.99 USD
-            </div>
-        </div>
-    </div>
+        }
+    }
 </div>
 <div class="row justify-content-center">
     <h5 class="block-title-section">
@@ -95,42 +76,21 @@
     </h5>
 </div>
 <div class="row my-3 d-flex justify-content-center">
-    <div class="col-2 mx-2 productItemContainer">
-        <a href="product.html?id=j-4"><img src="~/Content/img/MainPage/resource/j-4-1.jpg" class="mx-auto d-block"></a>
-        <div class="container d-block mt-2">
-            <h4 class="text-center cardTitle"><a href="#">Elisa Gold Open Frame Crystal Pendant Necklace In Gold</a></h4>
-            <div class="text-center priceSection mb-2">
-                $ 100.00 USD
+    @foreach (var item in Model)
+    {
+        if (item.Hot == 2)
+        {
+            <div class="col-2 mx-2 productItemContainer">
+                <a href="@Url.Action("Index", "Product", new { id = item.Id})"><img src="@Server.UrlDecode(item.FeatureImage)" class="mx-auto d-block"></a>
+                <div class="container d-block mt-2">
+                    <h4 class="text-center cardTitle"><a href="#">@item.Name</a></h4>
+                    <div class="text-center priceSection mb-2">
+                        $ @item.Price USD
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-    <div class="col-2 mx-2 productItemContainer">
-        <a href="product.html?id=na-1"><img src="~/Content/img/MainPage/resource/na-1-1.jpg" class="mx-auto d-block"></a>
-        <div class="container d-block mt-2">
-            <h4 class="text-center cardTitle"><a href="#">SHANY Nail Art Set</a></h4>
-            <div class="text-center priceSection mb-2">
-                $ 29.00 USD
-            </div>
-        </div>
-    </div>
-    <div class="col-2 mx-2 productItemContainer">
-        <a href="product.html?id=na-2"><img src="~/Content/img/MainPage/resource/na-2-1.jpg" class="mx-auto d-block"></a>
-        <div class="container d-block mt-2">
-            <h4 class="text-center cardTitle"><a href="#">SHANY 3D Nail Art Decoration Mini Bottles</a></h4>
-            <div class="text-center priceSection mb-2">
-                $ 12.00 USD
-            </div>
-        </div>
-    </div>
-    <div class="col-2 mx-2 productItemContainer">
-        <a href="product.html?id=np-4"><img src="~/Content/img/MainPage/resource/np-4-1.jpg" class="mx-auto d-block"></a>
-        <div class="container d-block mt-2">
-            <h4 class="text-center cardTitle"><a href="#">NY Bae Brighten up your 'gram Nail Lacquer Neon Mauve 7</a></h4>
-            <div class="text-center priceSection mb-2">
-                $ 0.69 USD
-            </div>
-        </div>
-    </div>
+        }
+    }
 </div>
 <div class="col-11 row justify-content-center mx-auto mb-2">
     <div class="col mx-3">
