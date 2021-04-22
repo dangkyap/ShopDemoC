@@ -58,12 +58,12 @@
             <div class="col-8"></div>
             <div class="col-4 row cartTotal">
                 <div class="col-6">Grand Total</div>
-                <div class="col-6">@total</div>
+                <div class="col-6">$@total</div>
             </div>
         </div>
         <div class="container my-3">
             <div class="text-right">
-                <a href="success.html"><button type="button" class="btn checkout-btn">Check out</button></a>
+                <a href="@Url.Action("Index", "Success")"><button type="button" class="btn checkout-btn">Check out</button></a>
                 <a href="@Url.Action("Index", "Home")"><button type="button" class="btn continue-btn">Continue shopping</button></a>
             </div>
         </div>

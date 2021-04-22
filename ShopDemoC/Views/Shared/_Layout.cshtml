@@ -35,11 +35,14 @@
                 <a href="@Url.Action("Index", "Home")"><img class="logoBanner" src="~/Content/img/MainPage/logo/logo-banner.jpg"></a>
             </div>
             <div class="col-8 col-lg-6 my-auto">
-                <!-- Search form -->
-                <form class="form-inline d-flex justify-content-center md-form form-sm active-pink-2 mt-2" action="success.html">
-                    <input class="form-control form-control-sm mr-3 w-75 no-border" type="text" placeholder="Search" aria-label="Search">
-                    <i class="fas fa-search" aria-hidden="true"></i>
-                </form>
+
+                @using (Html.BeginForm("Index", "Search", FormMethod.Get, new { @class = "form-inline d-flex justify-content-center md-form form-sm active-pink-2 mt-2" }))
+                {
+                    <!-- Search form -->                    
+                        @Html.TextBox("SearchString", null, new { @class = "form-control form-control-sm mr-3 w-75 no-border" , @placeholder = "Search" })
+                        
+                        <i class="fas fa-search" aria-hidden="true"></i>                   
+                }
             </div>
             <div class="d-none d-lg-block col-lg-3 row">
                 <div class="col-4 mx-auto cartBackground h-100">

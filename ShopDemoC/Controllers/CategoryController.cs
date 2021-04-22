@@ -1,8 +1,10 @@
-﻿using Shop.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using Shop.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -27,6 +29,6 @@ namespace ShopDemoC.Controllers
             }
 
             return View(products.ToList());
-        }
+        }        
     }
 }
