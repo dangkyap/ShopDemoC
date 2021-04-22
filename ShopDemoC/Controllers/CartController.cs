@@ -51,12 +51,20 @@ namespace ShopDemoC.Controllers
 		public ActionResult UpdateCart(long[] productIds, int[] quantities)
 		{
 			var items = GetCartItems();
-			for (int i = 0; i < productIds.Length; i++)
+
+			if (productIds == null)
 			{
-				var cartItem = items.Where(product => product.ProductId == productIds[i]).First();
-				cartItem.Quantity = quantities[i];
+				return RedirectToAction("Index");
 			}
-			return RedirectToAction("Index");
+			else
+			{
+				for (int i = 0; i < productIds.Length; i++)
+				{
+					var cartItem = items.Where(product => product.ProductId == productIds[i]).First();
+					cartItem.Quantity = quantities[i];
+				}
+				return RedirectToAction("Index");
+			}		
 		}
 
 		public ActionResult RemoveFromCart(int id)
