@@ -262,6 +262,7 @@
     <Compile Include="Models\ViewModels\CartItem.cs" />
     <Compile Include="Models\ViewModels\LoginView.cs" />
     <Compile Include="Models\ViewModels\NotificationMessage.cs" />
+    <Compile Include="Models\ViewModels\ProductView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
