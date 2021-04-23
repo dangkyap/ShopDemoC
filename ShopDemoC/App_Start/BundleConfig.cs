@@ -60,7 +60,7 @@ namespace ShopDemoC
                       "~/Content/daterangepicker.css",
                       "~/Content/summernote-bs4.css"));
 
-            bundles.Add(new StyleBundle("~/Content/maincss").Include(
+            bundles.Add(new StyleBundle("~/Content/main/css").Include(
                       "~/Content/maincss/bootstrap.css",
                       "~/Content/maincss/all.css",
                       "~/Content/maincss/fontawesome.css",
@@ -74,6 +74,9 @@ namespace ShopDemoC
 
             bundles.Add(new StyleBundle("~/Content/cartcss").Include(
                       "~/Content/maincss/cart.css"));
+
+            bundles.Add(new StyleBundle("~/Content/aboutcss").Include(
+                      "~/Content/maincss/about-us-only.css"));
         }
     }
 }

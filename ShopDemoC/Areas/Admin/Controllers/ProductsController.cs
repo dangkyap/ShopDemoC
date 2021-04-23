@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Shop.Common;
 using Shop.Models;
+using Shop.Models.ViewModels;
 
 namespace ShopDemoC.Areas.Admin.Controllers
 {
@@ -52,10 +55,18 @@ namespace ShopDemoC.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Price,Brand,CategoryId,Description,Info,FeatureImage,ImgLink1,ImgLink2,ImgLink3,ImgLink4,Status,PublishDate,Hot")] Product product)
+        public ActionResult Create(ProductView viewModel)
         {
+            Product product = new Product();
             if (ModelState.IsValid)
             {
+                viewModel.CopyToProduct(ref product);
+                product.FeatureImage = SaveFile(viewModel.UploadFile, product.FeatureImage);
+                product.ImgLink1 = SaveFile(viewModel.UploadFile1, product.ImgLink1);
+                product.ImgLink2 = SaveFile(viewModel.UploadFile2, product.ImgLink2);
+                product.ImgLink3 = SaveFile(viewModel.UploadFile3, product.ImgLink3);
+                product.ImgLink4 = SaveFile(viewModel.UploadFile4, product.ImgLink4);
+
                 db.Products.Add(product);
                 db.SaveChanges();
                 SetSuccessNotification();
@@ -79,7 +90,8 @@ namespace ShopDemoC.Areas.Admin.Controllers
                 return HttpNotFound();
             }
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "DisplayText", product.CategoryId);
-            return View(product);
+            var viewModel = new ProductView(product);
+            return View(viewModel);
         }
 
         // POST: Admin/Products/Edit/5
@@ -87,17 +99,25 @@ namespace ShopDemoC.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Price,Brand,CategoryId,Description,Info,FeatureImage,ImgLink1,ImgLink2,ImgLink3,ImgLink4,Status,PublishDate,Hot")] Product product)
+        public ActionResult Edit(ProductView viewModel)
         {
             if (ModelState.IsValid)
             {
+                Product product = db.Products.Find(viewModel.Id);
+                viewModel.CopyToProduct(ref product);
+                product.FeatureImage = SaveFile(viewModel.UploadFile, product.FeatureImage);
+                product.ImgLink1 = SaveFile(viewModel.UploadFile1, product.ImgLink1);
+                product.ImgLink2 = SaveFile(viewModel.UploadFile2, product.ImgLink2);
+                product.ImgLink3 = SaveFile(viewModel.UploadFile3, product.ImgLink3);
+                product.ImgLink4 = SaveFile(viewModel.UploadFile4, product.ImgLink4);
+
                 db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
                 SetSuccessNotification();
                 return RedirectToAction("Index");
             }
-            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "DisplayText", product.CategoryId);
-            return View(product);
+            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "DisplayText", viewModel.CategoryId);
+            return View(viewModel);
         }
 
         // GET: Admin/Products/Delete/5
@@ -134,6 +154,30 @@ namespace ShopDemoC.Areas.Admin.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        private string SaveFile(HttpPostedFileBase postedFile, string previousUrl = null)
+        {
+            if (postedFile == null)
+            {
+                return !string.IsNullOrEmpty(previousUrl) ? previousUrl : null;
+            }
+            string relativePath = ConfigurationManager.AppSettings.Get("shop:uploadsDir:products") ?? "/Uploads/Products";
+            string physicFolderPath = Server.MapPath(relativePath);
+            string previousFilePath = Server.MapPath(Server.UrlDecode(previousUrl));
+
+            // Create upload folder if not exist
+            if (!Directory.Exists(physicFolderPath))
+            {
+                Directory.CreateDirectory(physicFolderPath);
+            }
+            if (!string.IsNullOrEmpty(previousFilePath) && System.IO.File.Exists(previousFilePath))
+            {
+                System.IO.File.Delete(previousFilePath);
+            }
+
+            postedFile.SaveAs(Path.Combine(physicFolderPath, postedFile.FileName));
+            return Server.UrlEncode(relativePath + "/" + postedFile.FileName);
         }
     }
 }

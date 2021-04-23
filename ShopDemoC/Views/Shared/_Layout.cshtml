@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @*@Styles.Render("~/Content/css")*@
-    @Styles.Render("~/Content/maincss")
+    @Styles.Render("~/Content/main/css")
     @Scripts.Render("~/bundles/modernizr")
     @RenderSection("specialcss", required: false)
 </head>
@@ -103,7 +103,7 @@
     <main>
         @RenderBody()
         <button type="button" class="bottomBtnAbout">
-            <a href="about-us.html"><i class="fas fa-question"></i></a>
+            <a href="@Url.Action("About", "Home")"><i class="fas fa-question"></i></a>
         </button>
         <button type="button" class="bottomBtnContact">
             <a href="contact-us.html"><i class="fas fa-id-card"></i></i></a>
@@ -117,7 +117,7 @@
                     <div>Get the latest news on new arrivals, gifts, special offers and other discount information.</div>
                 </div>
                 <div class="col-12 col-lg-6 justify-content-center d-flex">
-                    <form id="newletter-sub" class="my-auto" action="success.html">
+                    <form id="newletter-sub" class="my-auto" action="@Url.Action("Index", "Success")">
                         <input type="email" name="newletter" id="newletter" placeholder="Enter your email andress">
                         <input type="submit" name="btn-newletter" value="SUBCRIBLE">
                     </form>

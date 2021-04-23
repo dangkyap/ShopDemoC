@@ -1,7 +1,98 @@
 ﻿@{
     ViewBag.Title = "About";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
-
-<p>Use this area to provide additional information.</p>
+@section specialcss
+{
+    @Styles.Render("~/Content/aboutcss")
+}
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-12 text-center my-3 py-2 aboutTitle">About Us</div>
+        <div class="col-10 my-1">Born a decade ago, Simplon Beauty Care brings you an expertly curated selection of luxury products sourced from around the world.</div>
+        <div class="col-10 my-1">From spa's of Budapest to the hills of USA, our dedicated team of skincare specialists make it their mission to scour the globe to make sure the best products and innovations are available at your fingertips. Eve Lom, Omorovicza, Erno Laszlo, Aesop, and Ren are just a few skincare brands that have been given the Beauty Expert seal of approval. And it doesn’t end there; we make it our mission to uncover favourites old and new, as well as providing educational solutions to your skin and beauty problems.</div>
+    </div>
+</div>
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-12 text-center my-3 py-2 aboutTitle">Our Purpose</div>
+        <div class="col-10 my-1">Everybody’s unique, and that’s what makes the world so beautiful.</div>
+        <div class="col-10 my-1">True beauty is authentic. Being who you choose to be and expressing that with pride is what authenticity is all about – and that’s beautiful.</div>
+        <div class="col-10 my-1">We believe beauty should make you feel happy. It should be fun, joyful and give you confidence.</div>
+        <div class="col-10 my-1">We also believe that beauty has the power to change the world. When people feel beautiful, they radiate joy and energy. Just imagine how the world would change if everyone felt that way, every single day.</div>
+        <div class="col-10 my-1">To empower that change, we at Simplon have made it our mission to Liberate and Celebrate the Diversity of Your Beauty.</div>
+    </div>
+</div>
+<div class="container my-3 py-3">
+    <div class="row">
+        <div class="col-12 text-center my-3 py-2 aboutTitle">Our Leader</div>
+        <div class="col-sm-4">
+            <div class="card card-flip h-100">
+                <div class="card-front text-white shadow">
+                    <div class="card-body text-center my-3">
+                        <p><img src="~/Content/img/MainPage/about-us/ab-3.jpg" class="img-reponsive"></p>
+                        <h3 class="card-title">Sue Y. Nabi</h3>
+                        <p class="card-text">Chief Executive Officer</p>
+                    </div>
+                </div>
+                <div class="card-back bg-white shadow">
+                    <div class="card-body text-center mt-4">
+                        <h4 class="card-title">Chief Executive Officer</h4>
+                        <p class="card-text">Sue is a beauty entrepreneur and innovator. Prior to joining Simplon, she founded and ran the new-age luxury skincare line Orveda. </p>
+                        <ul class="list-inline">
+                            <li class="list-inline-item"><i class="fa fa-facebook"></i></li>
+                            <li class="list-inline-item"><i class="fa fa-twitter"></i></li>
+                            <li class="list-inline-item"><i class="fa fa-skype"></i></i></li>
+                            <li class="list-inline-item"><i class="fa fa-google"></i></i></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card card-flip h-100">
+                <div class="card-front text-white shadow">
+                    <div class="card-body text-center my-3">
+                        <p><img src="~/Content/img/MainPage/about-us/ab-1.jpg" class="img-reponsive"></p>
+                        <h3 class="card-title">Peter Harf</h3>
+                        <p class="card-text">Executive Chairman</p>
+                    </div>
+                </div>
+                <div class="card-back bg-white shadow">
+                    <div class="card-body text-center mt-4">
+                        <h4 class="card-title">Executive Chairman</h4>
+                        <p class="card-text">Now Executive Chairman, Peter Harf served as Simplon’s Chief Executive from 1993 to 2001. Peter holds an MBA from Harvard Business School</p>
+                        <ul class="list-inline">
+                            <li class="list-inline-item"><i class="fa fa-facebook"></i></li>
+                            <li class="list-inline-item"><i class="fa fa-twitter"></i></li>
+                            <li class="list-inline-item"><i class="fa fa-skype"></i></i></li>
+                            <li class="list-inline-item"><i class="fa fa-google"></i></i></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card card-flip h-100">
+                <div class="card-front text-white shadow">
+                    <div class="card-body text-center my-3">
+                        <p><img src="~/Content/img/MainPage/about-us/ab-4.jpg" class="img-reponsive"></p>
+                        <h3 class="card-title">Kristin Blazewicz</h3>
+                        <p class="card-text">Chief Legal Officer</p>
+                    </div>
+                </div>
+                <div class="card-back bg-white shadow">
+                    <div class="card-body text-center mt-4">
+                        <h4 class="card-title">Chief Legal Officer</h4>
+                        <p class="card-text">Kristin joined Simplon in March 2020 from Keurig Dr Pepper, where she was responsible for Securities and Exchange Commission filings</p>
+                        <ul class="list-inline">
+                            <li class="list-inline-item"><i class="fa fa-facebook"></i></li>
+                            <li class="list-inline-item"><i class="fa fa-twitter"></i></li>
+                            <li class="list-inline-item"><i class="fa fa-skype"></i></i></li>
+                            <li class="list-inline-item"><i class="fa fa-google"></i></i></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
